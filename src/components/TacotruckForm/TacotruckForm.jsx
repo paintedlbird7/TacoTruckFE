@@ -10,7 +10,7 @@ const TacotruckForm = (props) => {
   const [formData, setFormData] = useState({
     title: '',
     text: '',
-    category: 'News',
+    // category: 'News',
   });
 
   const handleChange = (evt) => {
@@ -35,7 +35,9 @@ const handleSubmit = (evt) => {
       setFormData(tacotruckData);
     };
     if (tacotruckId) fetchTacotruck();
-    return () => setFormData({ title: '', text: '', category: 'News' });
+    return () => setFormData({ title: '', text: '', 
+      // category: 'News' 
+    });
   }, [tacotruckId]);
 
 
@@ -61,21 +63,21 @@ const handleSubmit = (evt) => {
           value={formData.text}
           onChange={handleChange}
         />
-        <label htmlFor='category-input'>Category</label>
-        <select
+        {/* <label htmlFor='category-input'>Category</label> */}
+        {/* <select
           required
           name='category'
           id='category-input'
           value={formData.category}
           onChange={handleChange}
-        >
-          <option value='News'>News</option>
+        > */}
+          {/* <option value='News'>News</option>
           <option value='Games'>Games</option>
           <option value='Music'>Music</option>
           <option value='Movies'>Movies</option>
           <option value='Sports'>Sports</option>
-          <option value='Television'>Television</option>
-        </select>
+          <option value='Television'>Television</option> */}
+        {/* </select> */}
         <button type='submit'>SUBMIT</button>
       </form>
     </main>

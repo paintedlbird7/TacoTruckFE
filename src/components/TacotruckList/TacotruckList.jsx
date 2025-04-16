@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 
 const TacotruckList = (props) => {
-  
+
 
   return (
     <main>
@@ -15,9 +15,11 @@ const TacotruckList = (props) => {
               <p>
                 {/* {`${tacotruck.author.username} posted on
                 ${new Date(tacotruck.createdAt).toLocaleDateString()}`} */}
-                  {`${tacotruck.author?.username || 'Unknown author'} posted on ${new Date(tacotruck.createdAt).toLocaleDateString()}`}
+                {tacotruck.author
+                  ? `${tacotruck.author.username}` 
+                  // posted on ${new Date(tacotruck.createdAt).toLocaleDateString()}`
+                  : 'Unknown author'}
 
-                
               </p>
             </header>
             <p>{tacotruck.text}</p>
@@ -26,8 +28,7 @@ const TacotruckList = (props) => {
       ))}
     </main>
   );
-  };
-  
-  
-  export default TacotruckList;
-  
+};
+
+
+export default TacotruckList;
