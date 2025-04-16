@@ -13,8 +13,11 @@ const TacotruckList = (props) => {
             <header>
               <h2>{tacotruck.title}</h2>
               <p>
-                {`${tacotruck.author.username} posted on
-                ${new Date(tacotruck.createdAt).toLocaleDateString()}`}
+                {/* {`${tacotruck.author.username} posted on
+                ${new Date(tacotruck.createdAt).toLocaleDateString()}`} */}
+                  {`${tacotruck.author?.username || 'Unknown author'} posted on ${new Date(tacotruck.createdAt).toLocaleDateString()}`}
+
+                
               </p>
             </header>
             <p>{tacotruck.text}</p>

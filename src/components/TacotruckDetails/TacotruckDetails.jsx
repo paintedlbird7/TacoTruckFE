@@ -35,7 +35,7 @@ const TacotruckDetails = (props) => {
         <main>
           <section>
             <header>
-              <p>{tacotruck.category.toUpperCase()}</p>
+              {/* <p>{tacotruck.category.toUpperCase()}</p> */}
               <h1>{tacotruck.title}</h1>
               <p>
                 {`${tacotruck.author.username} posted on
