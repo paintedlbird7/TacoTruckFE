@@ -60,17 +60,27 @@ const App = () => {
   const [tacotrucks, setTacotrucks] = useState([]);
   // src/App.jsx
   const { user } = useContext(UserContext);
+
+  // useEffect(() => {
+  //   const fetchAllTacotrucks = async () => {
+  //     const tacotrucksData = await tacotruckService.index();
+  //     // console log to verify data in the console
+  //     // console.log('tacotrucksData:', tacotrucksData);
+  //     setTacotrucks(tacotrucksData);
+  //   };
+  //   if (user) fetchAllTacotrucks();
+  //   // only fetch tacotrucks when a user is logged in
+  // }, [user]); // adding user dependency because the effect depends on the user to run
+ 
   useEffect(() => {
     const fetchAllTacotrucks = async () => {
       const tacotrucksData = await tacotruckService.index();
-      // console log to verify data in the console
-      // console.log('tacotrucksData:', tacotrucksData);
+      console.log('Fetched taco trucks:', tacotrucksData); // Check this log
       setTacotrucks(tacotrucksData);
     };
-    if (user) fetchAllTacotrucks();
-    // only fetch tacotrucks when a user is logged in
-  }, [user]); // adding user dependency because the effect depends on the user to run
-
+    fetchAllTacotrucks();
+  }, []);
+  
   return (
     <>
       <NavBar />
@@ -89,7 +99,9 @@ const App = () => {
           element={<TacotruckDetails handleDeleteTacotruck={handleDeleteTacotruck} />}
         />
         <Route path='/tacotrucks' element={<TacotruckList tacotrucks={tacotrucks} />} />
-        <Route path='/' element={user ? <Dashboard /> : <Landing />} />
+        {/* <Route path='/' element={user ? <Dashboard /> : <Landing />} /> */}
+        <Route path='/' element={user ? <Dashboard /> : <Landing tacotrucks={tacotrucks} />} />
+
         {user ? (
           <>
             {/* Protected routes (available only to signed-in users) */}
