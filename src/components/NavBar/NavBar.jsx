@@ -1,7 +1,11 @@
+// src/components/NavBar/NavBar.jsx
 import { useContext } from 'react';
 import { Link } from 'react-router';
 
 import { UserContext } from '../../contexts/UserContext';
+import styles from './NavBar.module.css';
+import Logo from '../../assets/images/logo.png';  //for logo
+
 
 const NavBar = () => {
   const { user, setUser } = useContext(UserContext);
@@ -12,7 +16,9 @@ const NavBar = () => {
   };
 
 return (
-  <nav>
+  <nav className={styles.container}>
+  <Link to='/'><img src={Logo} alt='RP Logo' /></Link>
+
     {user ? (
       <ul>
         <li><Link to='/'>HOME</Link></li>
@@ -30,5 +36,4 @@ return (
   </nav>
 );
 };
-
 export default NavBar;
