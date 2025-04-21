@@ -1,12 +1,13 @@
 // src/components/TacotruckList/TacotruckList.jsx
 import { Link } from 'react-router';
+import styles from './TacotruckList.module.css';
 
 
 const TacotruckList = (props) => {
 
 
   return (
-    <main>
+      <main className={styles.container}>
       {props.tacotrucks.map((tacotruck) => (
         <Link key={tacotruck._id} to={`/tacotrucks/${tacotruck._id}`}>
           <article>

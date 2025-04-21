@@ -3,6 +3,8 @@ const Landing = (props) => {
   console.log('Landing props:', props); // Log to check taco trucks data
   return (
     <main>
+       <h1>Hello, you are on the landing page for visitors.</h1>
+       <p>Sign up now, or sign in to see your super secret dashboard!</p>
       {props.tacotrucks?.map((tacotruck) => (
         <Link key={tacotruck._id} to={`/tacotrucks/${tacotruck._id}`}>
           <article>
@@ -18,8 +20,6 @@ const Landing = (props) => {
           </article>
         </Link>
       ))}
-      <h1>Hello, you are on the landing page for visitors.</h1>
-      <p>Sign up now, or sign in to see your super secret dashboard!</p>
     </main>
   );
 };
