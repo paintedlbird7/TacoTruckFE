@@ -37,7 +37,7 @@ main {
   button {
     padding: 0.5rem 1rem;
     background-color: #2a9d8f; /* green */
-    color: white;
+    /* color: white; */
     border: none;
     border-radius: 6px;
     cursor: pointer;
