@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from 'react';
 import * as tacotruckService from '../../services/tacotruckService';
 import CommentForm from '../CommentForm/CommentForm';
 import { UserContext } from '../../contexts/UserContext';
+import './TacotruckDetails.css';
 
 
 const TacotruckDetails = (props) => {
