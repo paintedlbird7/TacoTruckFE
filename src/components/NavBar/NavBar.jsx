@@ -22,8 +22,8 @@ return (
     {user ? (
       <ul>
         <li><Link to='/'>HOME</Link></li>
-        <li><Link to='/tacotrucks'>TACOTRUCKS</Link></li>
-        <li><Link to='/tacotrucks/new'>NEW TACOTRUCK</Link></li>
+        <li><Link to='/tacotrucks'>TACO TRUCKS</Link></li>
+        <li><Link to='/tacotrucks/new'>NEW TACO TRUCK</Link></li>
         <li><Link to='/' onClick={handleSignOut}>Sign Out</Link></li>
       </ul>
     ) : (
