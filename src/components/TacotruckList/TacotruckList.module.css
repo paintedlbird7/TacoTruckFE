@@ -1,4 +1,4 @@
-/* src/components/HootList/TacotruckList.module.css */
+/* src/components/TacotruckList/TacotruckList.module.css */
 
 /* List styling */
 
@@ -88,4 +88,5 @@
     border-radius: 50%;
     border: 1px solid var(--border);
   }
+  
   
