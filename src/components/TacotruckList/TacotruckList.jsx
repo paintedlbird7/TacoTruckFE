@@ -1,5 +1,6 @@
 // src/components/TacotruckList/TacotruckList.jsx
-import { Link } from 'react-router-dom'; // ✅ Fix import path
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './TacotruckList.module.css';
 
 const TacotruckList = (props) => {
@@ -8,22 +9,47 @@ const TacotruckList = (props) => {
     return <p>Loading taco trucks...</p>;
   }
 
+  const [favorites, setFavorites] = useState(() => {
+    const stored = localStorage.getItem('favorites');
+    return stored ? JSON.parse(stored) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
+
+  const toggleFavorite = (id) => {
+    setFavorites((prev) =>
+      prev.includes(id) ? prev.filter(fav => fav !== id) : [...prev, id]
+    );
+  };
+
   return (
     <main className={styles.container}>
       {props.tacotrucks.map((tacotruck) => (
-        <Link key={tacotruck._id} to={`/tacotrucks/${tacotruck._id}`}>
-          <article>
-            <header>
-              <h2>{tacotruck.title}</h2>
-              <p>
-                {tacotruck.author
-                  ? `${tacotruck.author.username}`
-                  : 'Unknown author'}
-              </p>
-            </header>
-            <p>{tacotruck.text}</p>
-          </article>
-        </Link>
+        <article key={tacotruck._id} className={styles.card}>
+          {/* Heart button in top-right corner */}
+          <button
+            className={styles.heartBtn}
+            onClick={(e) => {
+              e.preventDefault(); // stop navigation
+              toggleFavorite(tacotruck._id);
+            }}
+          >
+            {favorites.includes(tacotruck._id) ? '❤️' : '🤍'}
+          </button>
+
+          <header>
+            <h2>{tacotruck.title}</h2>
+            <p>
+              {tacotruck.author
+                ? `${tacotruck.author.username}`
+                : 'Unknown author'}
+            </p>
+          </header>
+          <p>{tacotruck.text}</p>
+          <Link to={`/tacotrucks/${tacotruck._id}`}>View Details</Link>
+        </article>
       ))}
     </main>
   );
