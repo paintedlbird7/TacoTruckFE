@@ -8,8 +8,8 @@ const TacotruckForm = (props) => {
   const { tacotruckId } = useParams();
   console.log(tacotruckId);
   const [formData, setFormData] = useState({
-    // title: '',
-    // text: '',
+    title: '',
+    text: '',
     name: '',
     location: '',
     description: '',
@@ -39,7 +39,7 @@ const TacotruckForm = (props) => {
     };
     if (tacotruckId) fetchTacotruck();
     return () => setFormData({
-      // title: '', 
+      title: '', 
       text: '',
       // category: 'News' 
       name: '', location: '', description: '' 
@@ -84,6 +84,7 @@ const TacotruckForm = (props) => {
           <option value='Sports'>Sports</option>
           <option value='Television'>Television</option> */}
         {/* </select> */}
+        
         <label htmlFor='name-input'>Name</label>
         <input
           required
@@ -119,6 +120,15 @@ const TacotruckForm = (props) => {
           name='text'
           id='text-input'
           value={formData.text}
+          onChange={handleChange}
+        />
+         <label htmlFor='title-input'>Title</label>
+        <input
+          required
+          type='text'
+          name='title'
+          id='title-input'
+          value={formData.title}
           onChange={handleChange}
         />
 
